@@ -1,8 +1,8 @@
-# Functional Diversity of Memory CD8 T Cells is Spatiotemporally Imprinted
+# Time-resolved single-cell and spatial gene regulatory atlas of plants under pathogen attack
 ![Project Banner](images/connections.png)
 
 > [!NOTE]
-> In this repository, we show how to reproduce the figures from our 2024 manuscript[^1]. Additionally, we provide our data processing pipelines to create fully-processed Anndata objects containing all of the spatial data used to construct figures.
+> In this repository, we show how to reproduce the figures from our 2023 manuscript[^1]. Additionally, we provide our data processing pipelines to create fully-processed Anndata and Seurat objects containing all of the single-cell and spatial data used to construct figures.
 
 ## Table of Contents
 
@@ -181,4 +181,4 @@ This section contains the scripts to reproduce the figures in the paper.
 - Maximilian Heeg: :envelope: mheeg@ucsd.edu
 - Ananda Goldrath: :envelope: agoldrath@alleninstitute.org
 
-[^1]: TODO add link to paper
+[^1]: https://www.biorxiv.org/content/10.1101/2023.04.10.536170v1
