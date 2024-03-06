@@ -57,51 +57,51 @@ This section contains the scripts to reproduce the figures in the paper.
 
 | Figure | Link                                                  |
 |--------|-------------------------------------------------------|
-| 1b     | [Immunofluorescence IMAP](/Figure_1/1b.ipynb)         |
-| 1c     | [Xenium, H&E, IF and transcripts](/Figure_1/1c.ipynb) |
-| 1d     | [Overview plots](/Figure_1/1d.ipynb)                  |
+| 1b     | [Notebook](/Figure_1/1b.ipynb)         |
+| 1c     | [Notebook](/Figure_1/1c.ipynb) |
+| 1d     | [Notebook](/Figure_1/1d.ipynb)                  |
 
 ### Figure 2
 
 | Figure                 | Link                                                |
 |------------------------|-----------------------------------------------------|
-| 2a <br /> 2b <br /> 2c | [Axes in the small intestine](/Figure_2/2abc.ipynb) |
-| 2d                     | [IMAP of P14](/Figure_2/2d.ipynb)                   |
-| 2e <br /> 2f           | [Correlation along the axes](/Figure_2/2ef.ipynb)   |
-| 2g                     | [Convolved expression heatmap](/Figure_2/2g.ipynb)  |
-| 2h <br /> 2i           | [Expression IMAP of P14](/Figure_2/2hi.ipynb)       |
-| 2j                     | [Signature IMAP of P14](/Figure_2/2j.ipynb)         |
+| 2a <br /> 2b <br /> 2c | [Notebook](/Figure_2/2abc.ipynb) |
+| 2d                     | [Notebook](/Figure_2/2d.ipynb)                   |
+| 2e <br /> 2f           | [Notebook](/Figure_2/2ef.ipynb)   |
+| 2g                     | [Notebook](/Figure_2/2g.ipynb)  |
+| 2h <br /> 2i           | [Notebook](/Figure_2/2hi.ipynb)       |
+| 2j                     | [Notebook](/Figure_2/2j.ipynb)         |
 
 ### Figure 3
 
 | Figure       | Link                                                                                                                                                                                  |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 3a           | [Spatial graph of the small intestine](/Figure_3/3a.ipynb)                                                                                                                            |
-| 3b <br /> 3c | [Co-localization of cells and P14 subsets](/Figure_3/3bc.ipynb)                                                                                                                       |
-| 3d           | [Convolved expression heatmap of cytokines](/Figure_3/3d.ipynb)                                                                                                                       |
-| 3e           | [TGFb isoforms in the small intestine](/Figure_3/3e.ipynb)                                                                                                                            |
-| 3f           | [Timecourse of TGFb isoform expression](/Figure_3/3f.ipynb)                                                                                                                           |
-| 3g           | Cellchat <br /> [Part 1: Preprocessing python](/Figure_3/3g_part1.ipynb) <br /> [Part 2: Run Cellchat](/Figure_3/3g_part2.ipynb) <br /> [Part 3: Make plot](/Figure_3/3g_part3.ipynb) |
+| 3a           | [Notebook](/Figure_3/3a.ipynb)                                                                                                                            |
+| 3b <br /> 3c | [Notebook](/Figure_3/3bc.ipynb)                                                                                                                       |
+| 3d           | [Notebook](/Figure_3/3d.ipynb)                                                                                                                       |
+| 3e           | [Notebook](/Figure_3/3e.ipynb)                                                                                                                            |
+| 3f           | [Notebook](/Figure_3/3f.ipynb)                                                                                                                           |
+| 3g           | Cellchat <br /> [Notebook](/Figure_3/3g_part1.ipynb) <br /> [Notebook](/Figure_3/3g_part2.ipynb) <br /> [Notebook](/Figure_3/3g_part3.ipynb) |
 
 ### Figure 4
 
 | Figure       | Link                                                          |
 |--------------|---------------------------------------------------------------|
-| 4a           | [Overview plots](/Figure_4/4a.ipynb)                          |
-| 4b <br /> 4e | [IMAP and expression IMAP](/Figure_4/4be.ipynb)               |
-| 4d           | [Differenitally expressed genes](/Figure_4/4d.ipynb)          |
-| 4g <br /> 4h | [Correlation of expression to celltypes](/Figure_4/4gh.ipynb) |
+| 4a           | [Notebook](/Figure_4/4a.ipynb)                          |
+| 4b <br /> 4e | [Notebook](/Figure_4/4be.ipynb)               |
+| 4d           | [Notebook](/Figure_4/4d.ipynb)          |
+| 4g <br /> 4h | [Notebook](/Figure_4/4gh.ipynb) |
 
 ### Figure 5
 
 | Figure       | Link                                                                                                                                                                                                                                                                                                                                                 |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 5a <br /> 5b | [MDE plot and cell frequencies](/Figure_5/5ab.ipynb)                                                                                                                                                                                                                                                                                                 |
-| 5c           | [Xenium, H&E, IF and transcripts](/Figure_5/5c.ipynb)                                                                                                                                                                                                                                                                                                |
-| 5d           | [Mouse signature on human IMAP](/Figure_5/5d.ipynb)                                                                                                                                                                                                                                                                                                  |
-| 5e <br /> 5f | [Convolved expression heatmap](/Figure_5/5ef.ipynb)                                                                                                                                                                                                                                                                                                  |
-| 5g           | [Correlation between gene expression and cell types](/Figure_5/5g.ipynb)                                                                                                                                                                                                                                                                             |
-| 5h           | Cellchat <br /> [Part 1: Dataset export](/Figure_5/5h_part1_dataset_export_signature.ipynb) <br /> [Part 2: Cellchat preparation](/Figure_5/5h_part2_cellchat_preparation%20signature.ipynb) <br /> [Part 3: Run Cellchat](/Figure_5/5h_part3_spatial_cellchat_signature.ipynb) <br /> [Part 4: Make plot](/Figure_5/5h_part4_output_cellchat.ipynb) |
+| 5a <br /> 5b | [Notebook](/Figure_5/5ab.ipynb)                                                                                                                                                                                                                                                                                                 |
+| 5c           | [Notebook](/Figure_5/5c.ipynb)                                                                                                                                                                                                                                                                                                |
+| 5d           | [Notebook](/Figure_5/5d.ipynb)                                                                                                                                                                                                                                                                                                  |
+| 5e <br /> 5f | [Notebook](/Figure_5/5ef.ipynb)                                                                                                                                                                                                                                                                                                  |
+| 5g           | [Notebook](/Figure_5/5g.ipynb)                                                                                                                                                                                                                                                                             |
+| 5h           | Cellchat <br /> [Notebook](/Figure_5/5h_part1_dataset_export_signature.ipynb) <br /> [Notebook](/Figure_5/5h_part2_cellchat_preparation%20signature.ipynb) <br /> [Notebook](/Figure_5/5h_part3_spatial_cellchat_signature.ipynb) <br /> [Notebook](/Figure_5/5h_part4_output_cellchat.ipynb) |
 
 ### Extended data figures
 
