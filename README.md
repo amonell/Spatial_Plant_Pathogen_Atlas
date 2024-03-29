@@ -23,7 +23,7 @@ This repository contains a `devcontainer` to allow to run the scripts in a repro
 ## Download
 
 The data needed to reproduce our results is available for download [here](http://neomorph.salk.edu/download/Nobori_etal_merfish).
-To reproduce the main figures, the following files in the `data` directory are needed.
+To reproduce the main figures, the following files in the `data` directory are needed. To get the segmentation files, prior to this pipeline we ran Baysor on the transcript output files from the MERSCOPE with the following command: 
 
 > [!IMPORTANT]
 > A script to download the processed data is included [here](download.ipynb).
