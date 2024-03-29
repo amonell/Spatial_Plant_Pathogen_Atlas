@@ -31,11 +31,29 @@ To reproduce the main figures, the following files in the `data` directory are n
 ```text
 data
 ├── segmentations
-│   └── kt56
+│   ├── kt56
 │       ├── segmentation_kt_cell_stats.csv
 │       └── segmentation_kt_counts.tsv
+│   ├── mock
+│       ├── segmentation_mock_cell_stats.csv
+│       └── segmentation_mock_counts.tsv
+│   ├── 4hr_avr
+│       ├── segmentation_4hr_avr_cell_stats.csv
+│       └── segmentation_4hr_avr_counts.tsv
+│   ├── 6hr_avr
+│       ├── segmentation_6hr_avr_cell_stats.csv
+│       └── segmentation_6hr_avr_counts.tsv
+│   ├── 9hr_avr
+│       ├── segmentation_9hr_avr_cell_stats.csv
+│       └── segmentation_9hr_avr_counts.tsv
+│   ├── avrrpt24
+│       ├── segmentation2_cell_stats.csv
+│       └── segmentation2_counts.tsv
 ├── useful_files
 │   └── geneID_to_geneName_MERSCOPE_panel1.txt
+├── AvrRpt2_alone.rds
+├── AvrRpt2_alone2.rds
+└── DC3000_alone.rds
 ```
 
 ## Preprocessing
