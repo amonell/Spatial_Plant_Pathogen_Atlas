@@ -22,7 +22,7 @@ This repository contains a `devcontainer` to allow to run the scripts in a repro
 
 ## Download
 
-The data needed to reproduce our results is available at XXXXXXXXXXXXXX.
+The data needed to reproduce our results is available for download [here](http://neomorph.salk.edu/download/Nobori_etal_merfish).
 To reproduce the main figures, the following files in the `data` directory are needed.
 
 > [!IMPORTANT]
