@@ -27,7 +27,7 @@ To reproduce the main figures, the following files in the `data` directory are n
 
 To get the segmentation files, prior to this pipeline we ran Baysor on the transcript output files from the MERSCOPE with the following command: `baysor run -s 250 -x global_x -y global_y -z global_z -o segmentation_'+os.path.basename(self.output_folder)+'.csv -g gene --num-cells-init '+str(int(num_cells_total*1.1))+' --n-clusters 1 --force-2d -i 1 -c baysor_avr_fullrun_config.toml detected_transcripts.csv`
 
-where num_cells_total is an estimate of the total number of cells in the given tissue. You can find the baysor_avr_fullrun_config.toml file [here](baysor_avr_fullrun_config.toml).
+where num_cells_total is an estimate of the total number of cells in the given tissue. You can find the baysor_avr_fullrun_config.toml file [here](baysor_avr_fullrun_config.toml). We provide the segmentation outputs at our download link. 
 
 > [!IMPORTANT]
 > A script to download the processed data is included [here](download.ipynb).
