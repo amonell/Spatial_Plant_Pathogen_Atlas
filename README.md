@@ -26,7 +26,7 @@ The data needed to reproduce our results is available at XXXXXXXXXXXXXX.
 To reproduce the main figures, the following files in the `data` directory are needed.
 
 > [!IMPORTANT]
-> A script to download the processed data is included [here](/data/download.ipynb).
+> A script to download the processed data is included [here](download.ipynb).
 
 ```text
 data
