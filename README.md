@@ -65,7 +65,7 @@ We had two major pipelines in the computational analysis.
 2. snMultiome data processing of Arabidopsis time course after infection replicate 2.
    [snMultiome rep 2 processing](/processing_pipelines/snMultiome_replicate_2_processing)
 3. Processing of MERSCOPE Arabidosis time course after infection.
-   [MERSCOPE processing](/processing_pipelines/MERSCOPE_processing)
+   [MERSCOPE processing](/processing_pipelines/MERFISH_processing)
 
 ## Figures
 
