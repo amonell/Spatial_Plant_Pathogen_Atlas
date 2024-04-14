@@ -30,7 +30,7 @@ To get the segmentation files, prior to this pipeline we ran Baysor on the trans
 where num_cells_total is an estimate of the total number of cells in the given tissue. You can find the baysor_avr_fullrun_config.toml file [here](baysor_avr_fullrun_config.toml). We provide the segmentation outputs at our download link. 
 
 > [!IMPORTANT]
-> A script to download the processed data is included [here](download.ipynb).
+> A script to download the processed data is included [here](data_download.py).
 
 ```text
 data
