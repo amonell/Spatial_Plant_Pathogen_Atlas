@@ -20,17 +20,13 @@ Plants lack specialized and mobile immune cells, requiring any cells–regardles
 
 This repository contains a `devcontainer` to allow to run the scripts in a reproducible manner. Please see the [documentation](https://code.visualstudio.com/docs/devcontainers/containers) for further information on how to use devcontainers.
 
-## Download
+## Spatial Data Download
 
 The data needed to reproduce our results is available for download [here](http://neomorph.salk.edu/download/Nobori_etal_merfish).
 To reproduce the main figures, the following files in the `data` directory are needed. 
 
-To get the segmentation files, prior to this pipeline we ran Baysor on the transcript output files from the MERSCOPE with the following command: `baysor run -s 250 -x global_x -y global_y -z global_z -o segmentation_'+os.path.basename(self.output_folder)+'.csv -g gene --num-cells-init '+str(int(num_cells_total*1.1))+' --n-clusters 1 --force-2d -i 1 -c baysor_avr_fullrun_config.toml detected_transcripts.csv`
-
-where num_cells_total is an estimate of the total number of cells in the given tissue. You can find the baysor_avr_fullrun_config.toml file [here](baysor_avr_fullrun_config.toml). We provide the segmentation outputs at our download link. 
-
 > [!IMPORTANT]
-> A script to download the processed data is included [here](data_download.py).
+> A script to download the input data to the pipeline is included [here](data_download_spatial.py).
 
 ```text
 data
@@ -60,17 +56,38 @@ data
 └── DC3000_alone.rds
 ```
 
-## Preprocessing
+## Spatial Preprocessing
 
-We had two major pipelines in the computational analysis.
+To get the segmentation files, prior to this pipeline we ran Baysor on the transcript output files from the MERSCOPE with the following command: `baysor run -s 250 -x global_x -y global_y -z global_z -o segmentation_'+os.path.basename(self.output_folder)+'.csv -g gene --num-cells-init '+str(int(num_cells_total*1.1))+' --n-clusters 1 --force-2d -i 1 -c baysor_avr_fullrun_config.toml detected_transcripts.csv`
+
+where num_cells_total is an estimate of the total number of cells in the given tissue. You can find the baysor_avr_fullrun_config.toml file [here](baysor_avr_fullrun_config.toml). We provide the segmentation outputs at our download link. 
+
+We have a spatial processing pipeline with several ordered Jupyter notebooks to create the processed objects needed for figure creation. 
+
+1. Processing of MERSCOPE Arabidopsis time course after infection.
+   [MERSCOPE processing](/processing_pipelines/MERFISH_processing)
+
+## snMultiome Data Download
+
+The data needed to reproduce our results is available for download [here](http://neomorph.salk.edu/download/Nobori_etal_merfish).
+To reproduce the main figures, the following files in the `data` directory are needed. 
+
+> [!IMPORTANT]
+> A script to download the input data to the pipeline is included [here](data_download_snMultiome.py).
+
+```text
+data
+
+```
+
+
+## snMultiome Data Download
 
 1. snMultiome data processing of Arabidopsis time course after infection replicate 1.
    [snMultiome rep 1 processing](/processing_pipelines/snMultiome_replicate_1_processing)
 2. snMultiome data processing of Arabidopsis time course after infection replicate 2.
    [snMultiome rep 2 processing](/processing_pipelines/snMultiome_replicate_2_processing)
-3. Processing of MERSCOPE Arabidosis time course after infection.
-   [MERSCOPE processing](/processing_pipelines/MERFISH_processing)
-
+   
 ## Figures
 
 This section contains the scripts to reproduce the figures in the paper.
