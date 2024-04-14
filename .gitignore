@@ -1,6 +1,7 @@
 data/*
 outputs/*
 Figure_outputs/*
+figures/*
 
 
 # Byte-compiled / optimized / DLL files
