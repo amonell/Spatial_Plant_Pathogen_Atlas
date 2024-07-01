@@ -1,8 +1,9 @@
 data/*
 outputs/*
 Figure_outputs/*
-figures/*
-
+!figures/**/*.*
+figures/**/*.png
+figures/**/*.pdf
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
