@@ -99,7 +99,8 @@ This section contains the scripts to reproduce the figures in the paper.
 | smFISH EDS16     | [Notebook](/processing_pipelines/smFISH_processing/01_quantify_sid_expression.ipynb)         |
 | bacterial analysis     | [Notebook](/figures/bacteria/bacteria.ipynb) |
 | Quality control metrics     | [Notebook](/figures/qc_metrics/qc_metrics.ipynb)     |
-| Joint embedding and spatial plotting  | [Notebook](/figures/joint_embedding_and_spatial_clusters/joint_embedding_and_spatial_clusters.ipynb)
+| Joint embedding and spatial plotting  | [Notebook](/figures/joint_embedding_and_spatial_clusters/joint_embedding_and_spatial_clusters.ipynb)    |
+| Celltype assignments accuracy  | [Notebook](/figures/celltype_assignment_accuracy/celltype_assignments.ipynb)     |
 
 ### snMultiome Figure Script Links
 
