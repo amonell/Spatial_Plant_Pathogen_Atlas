@@ -101,6 +101,7 @@ This section contains the scripts to reproduce the figures in the paper.
 | Quality control metrics     | [Notebook](/figures/qc_metrics/qc_metrics.ipynb)     |
 | Joint embedding and spatial plotting  | [Notebook](/figures/joint_embedding_and_spatial_clusters/joint_embedding_and_spatial_clusters.ipynb)    |
 | Celltype assignments accuracy  | [Notebook](/figures/celltype_assignment_accuracy/celltype_assignments.ipynb)     |
+| snMultiome pseudotime and clusters   | [Notebook](/figures/seq_clusters_and_pseudotime_figures/seq_clusters_and_pseudotime_figures.ipynb)    |
 
 ### snMultiome Figure Script Links
 
