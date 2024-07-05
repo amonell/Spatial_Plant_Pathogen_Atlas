@@ -92,15 +92,15 @@ data
 
 This section contains the scripts to reproduce the figures in the paper.
 
-### Figure 1
+### MERFISH Figure Script Links
 
 | Figure | Link                                                  |
 |--------|-------------------------------------------------------|
-| 1b     | [Notebook](/Figure_1/1b.ipynb)         |
-| 1c     | [Notebook](/Figure_1/1c.ipynb) |
-| 1d     | [Notebook](/Figure_1/1d.ipynb)                  |
+| smFISH EDS16     | [Notebook](/processing_pipelines/smFISH_processing/01_quantify_sid_expression.ipynb)         |
+| bacterial analysis     | [Notebook](/figures/bacteria/bacteria.ipynb) |
+| Quality control metrics     | [Notebook](/figures/qc_metrics/qc_metrics.ipynb)     |
 
-### Figure 2
+### snMultiome Figure Script Links
 
 | Figure                 | Link                                                |
 |------------------------|-----------------------------------------------------|
@@ -110,48 +110,6 @@ This section contains the scripts to reproduce the figures in the paper.
 | 2g                     | [Notebook](/Figure_2/2g.ipynb)  |
 | 2h <br /> 2i           | [Notebook](/Figure_2/2hi.ipynb)       |
 | 2j                     | [Notebook](/Figure_2/2j.ipynb)         |
-
-### Figure 3
-
-| Figure       | Link                                                                                                                                                                                  |
-|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 3a           | [Notebook](/Figure_3/3a.ipynb)                                                                                                                            |
-| 3b <br /> 3c | [Notebook](/Figure_3/3bc.ipynb)                                                                                                                       |
-| 3d           | [Notebook](/Figure_3/3d.ipynb)                                                                                                                       |
-| 3e           | [Notebook](/Figure_3/3e.ipynb)                                                                                                                            |
-| 3f           | [Notebook](/Figure_3/3f.ipynb)                                                                                                                           |
-| 3g           | Cellchat <br /> [Notebook](/Figure_3/3g_part1.ipynb) <br /> [Notebook](/Figure_3/3g_part2.ipynb) <br /> [Notebook](/Figure_3/3g_part3.ipynb) |
-
-### Figure 4
-
-| Figure       | Link                                                          |
-|--------------|---------------------------------------------------------------|
-| 4a           | [Notebook](/Figure_4/4a.ipynb)                          |
-| 4b <br /> 4e | [Notebook](/Figure_4/4be.ipynb)               |
-| 4d           | [Notebook](/Figure_4/4d.ipynb)          |
-| 4g <br /> 4h | [Notebook](/Figure_4/4gh.ipynb) |
-
-### Figure 5
-
-| Figure       | Link                                                                                                                                                                                                                                                                                                                                                 |
-|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 5a <br /> 5b | [Notebook](/Figure_5/5ab.ipynb)                                                                                                                                                                                                                                                                                                 |
-| 5c           | [Notebook](/Figure_5/5c.ipynb)                                                                                                                                                                                                                                                                                                |
-| 5d           | [Notebook](/Figure_5/5d.ipynb)                                                                                                                                                                                                                                                                                                  |
-| 5e <br /> 5f | [Notebook](/Figure_5/5ef.ipynb)                                                                                                                                                                                                                                                                                                  |
-| 5g           | [Notebook](/Figure_5/5g.ipynb)                                                                                                                                                                                                                                                                             |
-| 5h           | Cellchat <br /> [Notebook](/Figure_5/5h_part1_dataset_export_signature.ipynb) <br /> [Notebook](/Figure_5/5h_part2_cellchat_preparation%20signature.ipynb) <br /> [Notebook](/Figure_5/5h_part3_spatial_cellchat_signature.ipynb) <br /> [Notebook](/Figure_5/5h_part4_output_cellchat.ipynb) |
-
-### Extended data figures
-
-| Figure             | Link                                 |
-|--------------------|--------------------------------------|
-| ED 2b              | [Notebook](/Figure_2/2g.ipynb)       |
-| ED 2d              | [Notebook](/Figure_2/2j.ipynb)       |
-| ED 3d              | [Notebook](/Figure_3/3g_part3.ipynb) |
-| ED 4a              | [Notebook](/Figure_3/3g_part3.ipynb) |
-| ED 4f              | [Notebook](/Figure_4/4be.ipynb)      |
-| ED 5b <br /> ED 5d | [Notebook](/Figure_5/5ab.ipynb)      |
 
 ## Submitting changes
 
