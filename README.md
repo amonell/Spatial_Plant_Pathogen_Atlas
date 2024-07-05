@@ -66,7 +66,9 @@ We have a spatial processing pipeline with several ordered Jupyter notebooks to 
 
 1. Processing of MERSCOPE Arabidopsis time course after infection.
    [MERSCOPE processing](/processing_pipelines/MERFISH_processing)
-
+2. To process smFISH data for EDS16 quantification.
+   [smFISH processing](/processing_pipelines/smFISH_processing)
+   
 ## snMultiome Data Download
 
 The data needed to reproduce our results is available for download [here](http://neomorph.salk.edu/download/Nobori_etal_merfish).
