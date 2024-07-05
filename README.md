@@ -20,7 +20,7 @@ Plants lack specialized and mobile immune cells, requiring any cells–regardles
 
 This repository contains a `devcontainer` to allow to run the scripts in a reproducible manner. Please see the [documentation](https://code.visualstudio.com/docs/devcontainers/containers) for further information on how to use devcontainers. We have two devcontainers, all Python scripts can be run with a devcontainer creating the environment "python_plant_pathogen_atlas", and all R scripts can be run with a devcontainer creating the environment "R_plant_pathogen_atlas".
 
-[!NOTE]To run from VScode:
+> [!NOTE] To run from VScode:
 
 Open this repository in VS Code.
 
