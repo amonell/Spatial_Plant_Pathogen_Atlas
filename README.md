@@ -26,7 +26,7 @@ The data needed to reproduce our results is available for download [here](http:/
 To reproduce the main figures, the following files in the `data` directory are needed. 
 
 > [!IMPORTANT]
-> A script to download the input data to the pipeline is included [here](data_download_spatial.py).
+> A script to download the input data to the MERFISH pipeline is included [here](data_download_spatial.py). To download smFISH images of EDS16, please visit [this link] (http://neomorph.salk.edu/download/Nobori_etal_merfish/smFISH). We have not included these images in the download script. 
 
 ```text
 data
