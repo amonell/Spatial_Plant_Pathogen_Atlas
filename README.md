@@ -20,15 +20,15 @@ Plants lack specialized and mobile immune cells, requiring any cells–regardles
 
 This repository contains a `devcontainer` to allow to run the scripts in a reproducible manner. Please see the [documentation](https://code.visualstudio.com/docs/devcontainers/containers) for further information on how to use devcontainers. We have two devcontainers, all Python scripts can be run with a devcontainer creating the environment "python_plant_pathogen_atlas", and all R scripts can be run with a devcontainer creating the environment "R_plant_pathogen_atlas".
 
-> To run from VScode:
+##### Running from VS Code
 
-> Open this repository in VS Code.
-
-> Press Ctrl+Shift+P to open the Command Palette.
-
-> Type and select Remote-Containers: Open Folder in Container....
-
-> Select this project directory and choose the devcontainer that you want to use.
+1. Open this repository in VS Code.
+2. Open the Command Palette:
+   - Windows/Linux: `Ctrl+Shift+P`
+   - macOS: `Cmd+Shift+P`
+3. Type and select "Remote-Containers: Open Folder in Container..."
+4. Select this project directory.
+5. Choose the devcontainer you want to use.
 
 ## Spatial Data Download
 
