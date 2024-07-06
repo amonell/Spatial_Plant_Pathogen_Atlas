@@ -1,30 +1,42 @@
-FROM r-base:4.0.5
+# Start with R base image
+FROM rocker/r-ver:4.1.2
 
-ARG USERNAME=vscode
-ARG USER_UID=1002
-ARG USER_GID=$USER_UID
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev \
+    libfontconfig1-dev \
+    libharfbuzz-dev \
+    libfribidi-dev \
+    libfreetype6-dev \
+    libpng-dev \
+    libtiff5-dev \
+    libjpeg-dev \
+    libhdf5-dev \
+    python3 \
+    python3-pip \
+    python3-dev
 
-# Create the user
-RUN groupadd --gid $USER_GID $USERNAME \
-    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
-    #
-    # [Optional] Add sudo support. Omit if you don't need to install software after connecting.
-    && apt-get update \
-    && apt-get install -y sudo python3 python3-pip ffmpeg libaec-dev libblosc-dev libgif-dev libheif-dev build-essential libcurl4-gnutls-dev libbz2-dev liblzma-dev libxml2-dev libssl-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev\
-    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
-    && chmod 0440 /etc/sudoers.d/$USERNAME
+# Install Python packages
+RUN pip3 install --upgrade pip
+RUN pip3 install jupyter numpy pandas matplotlib seaborn scikit-learn
 
-USER $USERNAME
+RUN R -e "install.packages('devtools', repos='http://cran.rstudio.com/'); library(devtools)"
+RUN R -e "install.packages('BiocManager', repos='http://cran.rstudio.com/'); library(BiocManager)"
+RUN R -e "BiocManager::install(c('SingleCellExperiment', 'SummarizedExperiment')); library(SingleCellExperiment); library(SummarizedExperiment)"
 
-
-# installing r libraries
-RUN mkdir -p /home/$USERNAME/R/x86_64-pc-linux-gnu-library/4.0 && \
-    chown $USERNAME:$USERNAME /home/$USERNAME/R/x86_64-pc-linux-gnu-library/4.0 && \
-    Rscript -e "install.packages('devtools', repos='http://cran.rstudio.com/', lib='/home/$USERNAME/R/x86_64-pc-linux-gnu-library/4.0')" && \
-    Rscript -e "devtools::install_github('JiekaiLab/dior')" && \
-    Rscript -e "install.packages('IRkernel')" && \
-    Rscript -e "IRkernel::installspec()"
-
-
-
-ENV DEVCONTAINER=true
+# install Matrix 1.6.4
+RUN R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/Matrix/Matrix_1.6-4.tar.gz')"
+RUN R -e "install.packages('SeuratObject', repos='http://cran.rstudio.com/'); library(SeuratObject)"
+RUN R -e "install.packages('sctransform', repos='http://cran.rstudio.com/'); library(sctransform)"
+RUN R -e "install.packages('Seurat', repos='http://cran.rstudio.com/'); library(Seurat)"
+RUN R -e "devtools::install_github('JiekaiLab/dior'); library(dior)"
+RUN R -e "devtools::install_github('dmcable/spacexr'); library(spacexr)"
+RUN R -e "install.packages('ggplot2', repos='http://cran.rstudio.com/'); library(ggplot2)"
+# Install R packages
+#RUN R -e "install.packages(c('devtools', 'BiocManager', 'Seurat'), repos='http://cran.rstudio.com/'); library(devtools); devtools::install_github('JiekaiLab/dior'); library(BiocManager); BiocManager::install(c("SingleCellExperiment", "SummarizedExperiment"))"
+# Install IRkernel (R kernel for Jupyter)
+RUN R -e "install.packages('IRkernel', repos='http://cran.rstudio.com/'); IRkernel::installspec(user = FALSE)"
+# Set up Python kernel for Jupyter
+RUN python3 -m ipykernel install --name python3 --display-name "Python 3"
