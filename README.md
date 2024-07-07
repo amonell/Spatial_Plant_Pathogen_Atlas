@@ -36,7 +36,7 @@ The data needed to reproduce our results is available for download [here](http:/
 To reproduce the main figures, the following files in the `data` directory are needed. 
 
 > [!IMPORTANT]
-> A script to download the input data to the MERFISH pipeline is included [here](data_download_spatial.py). To download smFISH images of EDS16, please visit [this link](http://neomorph.salk.edu/download/Nobori_etal_merfish/smFISH). We have not included these images in the download script. 
+> A script to download the input data to the MERFISH pipeline is included [here](data_download_spatial.py). To download smFISH images of EDS16 (ICS1), please visit [this link](http://neomorph.salk.edu/download/Nobori_etal_merfish/smFISH). We have not included these images in the download script. 
 
 ```text
 data
@@ -76,29 +76,8 @@ We have a spatial processing pipeline with several ordered Jupyter notebooks to 
 
 1. Processing of MERSCOPE Arabidopsis time course after infection.
    [MERSCOPE processing](/processing_pipelines/MERFISH_processing)
-2. To process smFISH data for EDS16 quantification.
+2. To process smFISH data for EDS16 (ICS1) quantification.
    [smFISH processing](/processing_pipelines/smFISH_processing)
-   
-## snMultiome Data Download
-
-The data needed to reproduce our results is available for download [here](http://neomorph.salk.edu/download/Nobori_etal_merfish).
-To reproduce the main figures, the following files in the `data` directory are needed. 
-
-> [!IMPORTANT]
-> A script to download the input data to the pipeline is included [here](data_download_snMultiome.py).
-
-```text
-data
-
-```
-
-
-## snMultiome Data Download
-
-1. snMultiome data processing of Arabidopsis time course after infection replicate 1.
-   [snMultiome rep 1 processing](/processing_pipelines/snMultiome_replicate_1_processing)
-2. snMultiome data processing of Arabidopsis time course after infection replicate 2.
-   [snMultiome rep 2 processing](/processing_pipelines/snMultiome_replicate_2_processing)
    
 ## Figures
 
@@ -118,16 +97,9 @@ This section contains the scripts to reproduce the figures in the paper.
 | RNA/ATAC/Chromvar imputation      | [Notebooks](/figures/imputation)   |
 | Spatial Differential Expression   | [Notebooks](/figures/spatial_differential_expression/HowWeFoundBON3.ipynb)     |
 
-### snMultiome Figure Script Links
+## snMultiome Processing
 
-| Figure                 | Link                                                |
-|------------------------|-----------------------------------------------------|
-| 2a <br /> 2b <br /> 2c | [Notebook](/Figure_2/2abc.ipynb) |
-| 2d                     | [Notebook](/Figure_2/2d.ipynb)                   |
-| 2e <br /> 2f           | [Notebook](/Figure_2/2ef.ipynb)   |
-| 2g                     | [Notebook](/Figure_2/2g.ipynb)  |
-| 2h <br /> 2i           | [Notebook](/Figure_2/2hi.ipynb)       |
-| 2j                     | [Notebook](/Figure_2/2j.ipynb)         |
+To access the snMultiome processing code, please visit (https://github.com/tnobori/snMultiome.git)
 
 ## Submitting changes
 
@@ -136,7 +108,7 @@ This section contains the scripts to reproduce the figures in the paper.
 
 ## Contact
 
-- Tatsuya Nobori: :envelope: tnobori@salk.edu
+- Tatsuya Nobori: :envelope: Tatsuya.Nobori@tsl.ac.uk
 - Alexander Monell: :envelope: amonell@ucsd.edu
 - Joe Ecker: :envelope: ecker@salk.edu
 
