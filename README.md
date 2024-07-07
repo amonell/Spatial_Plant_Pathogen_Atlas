@@ -32,7 +32,7 @@ This repository contains a `devcontainer` to allow to run the scripts in a repro
 
 We are running Ubuntu 22.04.3 LTS.
 
-[!If you prefer not to use Docker]
+> [!If you prefer not to use Docker]
 
 A yml file for the Python environment can be found at:
 `.devcontainer/docker_python/python_scripts_environment.yml`. 
