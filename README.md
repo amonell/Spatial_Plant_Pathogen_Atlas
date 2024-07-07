@@ -97,7 +97,7 @@ This section contains the scripts to reproduce the figures in the paper.
 | RNA/ATAC/Chromvar imputation      | [Notebooks](/figures/imputation)   |
 | Spatial Differential Expression   | [Notebooks](/figures/spatial_differential_expression/HowWeFoundBON3.ipynb)     |
 
-### snMultiome Processing
+## snMultiome Processing
 
 To access the snMultiome processing code, please visit (https://github.com/tnobori/snMultiome.git)
 
