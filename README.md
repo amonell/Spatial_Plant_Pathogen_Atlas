@@ -32,11 +32,13 @@ This repository contains a `devcontainer` to allow to run the scripts in a repro
 
 We are running Ubuntu 22.04.3 LTS.
 
-If you prefer not to use Docker, a yml file for the Python environment can be found at:
+[!If you prefer not to use Docker]
+
+A yml file for the Python environment can be found at:
 `.devcontainer/docker_python/python_scripts_environment.yml`. 
 
-The required packages for the R environment are at:
-
+The required packages and versions for the R environment are at:
+`.devcontainer/devcontainer_R/r_packages.txt`
 
 ## Spatial Data Download
 
