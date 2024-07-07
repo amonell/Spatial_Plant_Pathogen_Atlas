@@ -36,7 +36,7 @@ The data needed to reproduce our results is available for download [here](http:/
 To reproduce the main figures, the following files in the `data` directory are needed. 
 
 > [!IMPORTANT]
-> A script to download the input data to the MERFISH pipeline is included [here](data_download_spatial.py). To download smFISH images of EDS16, please visit [this link](http://neomorph.salk.edu/download/Nobori_etal_merfish/smFISH). We have not included these images in the download script. 
+> A script to download the input data to the MERFISH pipeline is included [here](data_download_spatial.py). To download smFISH images of EDS16 (ICS1), please visit [this link](http://neomorph.salk.edu/download/Nobori_etal_merfish/smFISH). We have not included these images in the download script. 
 
 ```text
 data
@@ -76,7 +76,7 @@ We have a spatial processing pipeline with several ordered Jupyter notebooks to 
 
 1. Processing of MERSCOPE Arabidopsis time course after infection.
    [MERSCOPE processing](/processing_pipelines/MERFISH_processing)
-2. To process smFISH data for EDS16 quantification.
+2. To process smFISH data for EDS16 (ICS1) quantification.
    [smFISH processing](/processing_pipelines/smFISH_processing)
    
 ## snMultiome Data Download
@@ -136,7 +136,7 @@ This section contains the scripts to reproduce the figures in the paper.
 
 ## Contact
 
-- Tatsuya Nobori: :envelope: tnobori@salk.edu
+- Tatsuya Nobori: :envelope: Tatsuya.Nobori@tsl.ac.uk
 - Alexander Monell: :envelope: amonell@ucsd.edu
 - Joe Ecker: :envelope: ecker@salk.edu
 
