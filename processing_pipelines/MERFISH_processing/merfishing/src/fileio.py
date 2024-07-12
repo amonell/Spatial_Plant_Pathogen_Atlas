@@ -45,7 +45,7 @@ def load_vizgen_barcodes(output_folder: str) -> pd.DataFrame:
         region = bcfile.split("/")[-2].split("_")[1]
         bcs[-1]["region"] = region
     return bcs.reset_index().drop(columns="index")
-    #return pd.concat(bcs)bcs.reset_index().drop(columns="index")
+    # return pd.concat(bcs)bcs.reset_index().drop(columns="index")
 
 
 def load_hyb_drifts(merlin_dir: str, fov: int) -> pd.DataFrame:
@@ -104,7 +104,9 @@ def load_mask(segmask_dir: str, fov: int, pad: int = 6) -> np.ndarray:
     if os.path.exists(filename):
         return np.load(filename, allow_pickle=True).item()["masks"]
 
-    filename = os.path.join(segmask_dir, f"stack_prestain_"+str(fov).zfill(6)+"_cp_masks_cp_masks.png")
+    filename = os.path.join(
+        segmask_dir, f"stack_prestain_" + str(fov).zfill(6) + "_cp_masks_cp_masks.png"
+    )
     if os.path.exists(filename):
         from PIL import Image
 

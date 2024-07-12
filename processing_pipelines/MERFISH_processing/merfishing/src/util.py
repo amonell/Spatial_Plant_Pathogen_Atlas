@@ -20,6 +20,7 @@ def fov_to_global_coordinates(x, y, fov, positions):
     global_y = 220 * y / 2048 - np.array(positions.loc[fov]["x"])
     return global_x, global_y
 
+
 def fov_to_global_coordinates_from_tiff(x, y, fov, positions):
     global_x = x + np.array(positions.loc[fov]["x"])
     global_y = y - np.array(positions.loc[fov]["y"])

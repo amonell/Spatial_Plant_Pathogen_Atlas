@@ -25,7 +25,7 @@
 	// Set a global package repository for R.
 	// The R version should match the one above.
 	"postCreateCommand": "sudo cp .devcontainer/devcontainer_R/Rprofile.site /opt/R/4.0.5/lib/R/etc/Rprofile.site && Rscript -e 'BiocManager::install(\"SummarizedExperiment\"); BiocManager::install(\"SingleCellExperiment\"); devtools::install_github(\"JiekaiLab/dior\"); devtools::install_github(\"dmcable/spacexr\")'&& sudo chmod -R 777 /workspaces/Spatial_Plant_Pathogen_Atlas/data",
-	
+
 	"mounts": [
 		"source=/projects,target=/projects,type=bind,consistency=cached",
 		"source=/mnt,target=/mnt,type=bind,consistency=cached"

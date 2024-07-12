@@ -18,7 +18,7 @@ Plants lack specialized and mobile immune cells, requiring any cells–regardles
 
 ## Setup
 
-This repository contains a `devcontainer` to allow to run the scripts in a reproducible manner. Please see the [documentation](https://code.visualstudio.com/docs/devcontainers/containers) for further information on how to use devcontainers. We have three devcontainers for the spatial pipelines, and each notebook should be run with the devcontainer specified at the top. The Python scripts can be run with devcontainers creating the environments `python_plant_pathogen_atlas` and `python_scvi_environment`, and all R scripts can be run with a devcontainer creating the environment `r_plant_pathogen_atlas`. 
+This repository contains a `devcontainer` to allow to run the scripts in a reproducible manner. Please see the [documentation](https://code.visualstudio.com/docs/devcontainers/containers) for further information on how to use devcontainers. We have three devcontainers for the spatial pipelines, and each notebook should be run with the devcontainer specified at the top. The Python scripts can be run with devcontainers creating the environments `python_plant_pathogen_atlas` and `python_scvi_environment`, and all R scripts can be run with a devcontainer creating the environment `r_plant_pathogen_atlas`.
 
 ##### Running from VS Code
 
@@ -35,10 +35,10 @@ We are running Ubuntu 22.04.3 LTS.
 ## Spatial Data Download
 
 The data needed to reproduce our results is available for download [here](http://neomorph.salk.edu/download/Nobori_etal_merfish).
-To reproduce the main figures, the following files in the `data` directory are needed. 
+To reproduce the main figures, the following files in the `data` directory are needed.
 
 > [!IMPORTANT]
-> A script to download the input data to the MERFISH pipeline is included [here](data_download_spatial.py). To download smFISH images of EDS16 (ICS1), please visit [this link](http://neomorph.salk.edu/download/Nobori_etal_merfish/smFISH). We have not included these images in the download script. 
+> A script to download the input data to the MERFISH pipeline is included [here](data_download_spatial.py). To download smFISH images of EDS16 (ICS1), please visit [this link](http://neomorph.salk.edu/download/Nobori_etal_merfish/smFISH). We have not included these images in the download script.
 
 ```text
 data
@@ -72,15 +72,15 @@ data
 
 To get the segmentation files, prior to this pipeline we ran Baysor on the transcript output files from the MERSCOPE with the following command: `baysor run -s 250 -x global_x -y global_y -z global_z -o segmentation_'+os.path.basename(self.output_folder)+'.csv -g gene --num-cells-init '+str(int(num_cells_total*1.1))+' --n-clusters 1 --force-2d -i 1 -c baysor_avr_fullrun_config.toml detected_transcripts.csv`
 
-where num_cells_total is an estimate of the total number of cells in the given tissue. You can find the baysor_avr_fullrun_config.toml file [here](baysor_avr_fullrun_config.toml). We provide the segmentation outputs at our download link. 
+where num_cells_total is an estimate of the total number of cells in the given tissue. You can find the baysor_avr_fullrun_config.toml file [here](baysor_avr_fullrun_config.toml). We provide the segmentation outputs at our download link.
 
-We have a spatial processing pipeline with several ordered Jupyter notebooks to create the processed objects needed for figure creation. 
+We have a spatial processing pipeline with several ordered Jupyter notebooks to create the processed objects needed for figure creation.
 
 1. Processing of MERSCOPE Arabidopsis time course after infection.
    [MERSCOPE processing](/processing_pipelines/MERFISH_processing)
 2. To process smFISH data for EDS16 (ICS1) quantification.
    [smFISH processing](/processing_pipelines/smFISH_processing)
-   
+
 ## Figures
 
 This section contains the scripts to reproduce the figures in the paper.

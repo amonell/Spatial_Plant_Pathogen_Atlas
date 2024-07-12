@@ -78,7 +78,9 @@ def lsi(
     tf, _ = tf_idf(data, scale_factor)
     n_rows, n_cols = tf.shape
     n_components = min(n_rows, n_cols, n_components)
-    svd = TruncatedSVD(n_components=n_components, algorithm=algorithm, random_state=random_state)
+    svd = TruncatedSVD(
+        n_components=n_components, algorithm=algorithm, random_state=random_state
+    )
 
     if fit_size is None:
         # fit the SVD using all rows
@@ -90,7 +92,12 @@ def lsi(
         # fit the SVD using partial rows to speed up
         if fit_size < 1:
             fit_size = max(int(n_rows * fit_size), n_components)
-        use_cells = pd.Series(range(n_rows)).sample(fit_size, random_state=random_state).sort_index().tolist()
+        use_cells = (
+            pd.Series(range(n_rows))
+            .sample(fit_size, random_state=random_state)
+            .sort_index()
+            .tolist()
+        )
         svd.fit(tf.tocsr()[use_cells, :])
         matrix_reduce = svd.transform(tf)
 
@@ -118,13 +125,19 @@ class LSI:
         if model is not None:
             self.model = model
         else:
-            self.model = TruncatedSVD(n_components=n_components, algorithm=algorithm, random_state=random_state)
+            self.model = TruncatedSVD(
+                n_components=n_components,
+                algorithm=algorithm,
+                random_state=random_state,
+            )
         self.random_state = random_state
 
     def _downsample_data(self, data, downsample):
         np.random.seed(self.random_state)
         if downsample is not None and downsample < data.shape[0]:
-            use_row_idx = np.sort(np.random.choice(np.arange(0, data.shape[0]), downsample, replace=False))
+            use_row_idx = np.sort(
+                np.random.choice(np.arange(0, data.shape[0]), downsample, replace=False)
+            )
             data = data[use_row_idx, :]
         return data
 
@@ -166,7 +179,11 @@ class LSI:
         check_is_fitted(self.model)
         tf_reduce = []
         for chunk_start in np.arange(0, _data.shape[0], chunk_size):
-            tf, _ = tf_idf(_data[chunk_start : (chunk_start + chunk_size)], self.scale_factor, self.idf)
+            tf, _ = tf_idf(
+                _data[chunk_start : (chunk_start + chunk_size)],
+                self.scale_factor,
+                self.idf,
+            )
             tf_reduce.append(self.model.transform(tf))
 
         tf_reduce = np.concatenate(tf_reduce, axis=0)

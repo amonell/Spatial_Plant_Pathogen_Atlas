@@ -101,7 +101,12 @@ def find_neighbor(cc1, cc2, k, random_state=0, n_jobs=-1):
 
 def find_mnn(G12, G21, kanchor):
     """Calculate mutual nearest neighbor for two datasets."""
-    anchor = [[i, G12[i, j]] for i in range(G12.shape[0]) for j in range(kanchor) if (i in G21[G12[i, j], :kanchor])]
+    anchor = [
+        [i, G12[i, j]]
+        for i in range(G12.shape[0])
+        for j in range(kanchor)
+        if (i in G21[G12[i, j], :kanchor])
+    ]
     return np.array(anchor)
 
 
@@ -157,11 +162,15 @@ def filter_anchor(
     G = index.query(qry_data, k=k_filter)[0]
     input_anchors = anchor.shape[0]
     anchor = np.array([xx for xx in anchor if (xx[0] in G[xx[1]])])
-    print(f"Anchor selected with high CC feature graph: {anchor.shape[0]} / {input_anchors}")
+    print(
+        f"Anchor selected with high CC feature graph: {anchor.shape[0]} / {input_anchors}"
+    )
     return anchor
 
 
-def score_anchor(anchor, G11, G12, G21, G22, k_score=30, Gp1=None, Gp2=None, k_local=50):
+def score_anchor(
+    anchor, G11, G12, G21, G22, k_score=30, Gp1=None, Gp2=None, k_local=50
+):
     """
     Score the anchor by the number of shared neighbors.
 
@@ -200,15 +209,21 @@ def score_anchor(anchor, G11, G12, G21, G22, k_score=30, Gp1=None, Gp2=None, k_l
 
     if k_local:
         # if k_local is not None, then use local KNN to adjust the score
-        share_nn = np.array([len(set(Gp1[i]).intersection(G11[i, :k_local])) for i in range(len(Gp1))])
+        share_nn = np.array(
+            [len(set(Gp1[i]).intersection(G11[i, :k_local])) for i in range(len(Gp1))]
+        )
         tmp = [share_nn[xx] for xx in anchor_df["x1"].values]
         anchor_df["score_local1"] = min_max(tmp)
 
-        share_nn = np.array([len(set(Gp2[i]).intersection(G22[i, :k_local])) for i in range(len(Gp2))])
+        share_nn = np.array(
+            [len(set(Gp2[i]).intersection(G22[i, :k_local])) for i in range(len(Gp2))]
+        )
         tmp = [share_nn[xx] for xx in anchor_df["x2"].values]
         anchor_df["score_local2"] = min_max(tmp)
 
-        anchor_df["score"] = anchor_df["score"] * anchor_df["score_local1"] * anchor_df["score_local2"]
+        anchor_df["score"] = (
+            anchor_df["score"] * anchor_df["score_local1"] * anchor_df["score_local2"]
+        )
     return anchor_df
 
 
@@ -296,7 +311,9 @@ class SeuratIntegration:
         if key_anchor == "X":
             # in case the adata var is not in the same order
             # select and order the var to make sure it is matched
-            if (adata1.shape[1] != adata2.shape[1]) or ((adata1.var.index == adata2.var.index).sum() < adata1.shape[1]):
+            if (adata1.shape[1] != adata2.shape[1]) or (
+                (adata1.var.index == adata2.var.index).sum() < adata1.shape[1]
+            ):
                 sel_b = adata1.var.index & adata2.var.index
                 U = adata1[:, sel_b].X.copy()
                 V = adata2[:, sel_b].X.copy()
@@ -386,7 +403,9 @@ class SeuratIntegration:
                 )
                 high_dim_feature = None
             else:
-                raise ValueError(f"Dimension reduction method {dim_red} is not supported.")
+                raise ValueError(
+                    f"Dimension reduction method {dim_red} is not supported."
+                )
 
             # 3. normalize CCV per sample/row
             U = normalize(U, axis=1)
@@ -395,8 +414,10 @@ class SeuratIntegration:
             # 4. find MNN of U and V to find anchors
             print("Find Anchors")
             _k = max(i for i in [k_anchor, k_local, k_score, 50] if i is not None)
-            G11, G12, G21, G22, raw_anchors = self._calculate_mutual_knn_and_raw_anchors(
-                i=i, j=j, U=U, V=V, k=_k, k_anchor=k_anchor
+            G11, G12, G21, G22, raw_anchors = (
+                self._calculate_mutual_knn_and_raw_anchors(
+                    i=i, j=j, U=U, V=V, k=_k, k_anchor=k_anchor
+                )
             )
 
             # 5. filter anchors by high dimensional neighbors
@@ -438,7 +459,9 @@ class SeuratIntegration:
                 print("Run rLSI")
                 model = LSI(n_components=ncc, random_state=random_state)
             else:
-                raise ValueError(f"Dimension reduction method {dim_red} is not supported.")
+                raise ValueError(
+                    f"Dimension reduction method {dim_red} is not supported."
+                )
             tf1, tf2, scaler1, scaler2 = downsample(
                 adata1,
                 adata2,
@@ -456,7 +479,11 @@ class SeuratIntegration:
                 U = U / model.model.singular_values_
                 V = V / model.model.singular_values_
             index = pynndescent.NNDescent(
-                U, metric="euclidean", n_neighbors=k + 1, random_state=random_state, n_jobs=-1
+                U,
+                metric="euclidean",
+                n_neighbors=k + 1,
+                random_state=random_state,
+                n_jobs=-1,
             )
             G11 = index.neighbor_graph[0][:, 1 : k + 1]
             G21 = index.query(V, k=k)[0]
@@ -469,7 +496,11 @@ class SeuratIntegration:
                 U = U / model.model.singular_values_
                 V = V / model.model.singular_values_
             index = pynndescent.NNDescent(
-                V, metric="euclidean", n_neighbors=k + 1, random_state=random_state, n_jobs=-1
+                V,
+                metric="euclidean",
+                n_neighbors=k + 1,
+                random_state=random_state,
+                n_jobs=-1,
             )
             G22 = index.neighbor_graph[0][:, 1 : k + 1]
             G12 = index.query(U, k=k)[0]
@@ -636,11 +667,22 @@ class SeuratIntegration:
 
                 # save anchors
                 self.anchor[(i, j)] = anchor_df.copy()
-                print(f"Identified {len(self.anchor[i, j])} anchors between datasets {i} and {j}.")
+                print(
+                    f"Identified {len(self.anchor[i, j])} anchors between datasets {i} and {j}."
+                )
         return
 
     def find_nearest_anchor(
-        self, data, data_qry, ref, qry, key_correct="X_pca", npc=30, kweight=100, sd=1, random_state=0
+        self,
+        data,
+        data_qry,
+        ref,
+        qry,
+        key_correct="X_pca",
+        npc=30,
+        kweight=100,
+        sd=1,
+        random_state=0,
     ):
         """Find the nearest anchors for each cell in data."""
         print("Initialize")
@@ -666,7 +708,9 @@ class SeuratIntegration:
         anchor = anchor[["x1", "x2"]].values
 
         if key_correct == "X":
-            model = PCA(n_components=npc, svd_solver="arpack", random_state=random_state)
+            model = PCA(
+                n_components=npc, svd_solver="arpack", random_state=random_state
+            )
             reduce_qry = model.fit_transform(data_qry)
         else:
             reduce_qry = data_qry
@@ -724,9 +768,14 @@ class SeuratIntegration:
         data_prj = np.zeros(data_qry.shape)
 
         for chunk_start in np.arange(0, data_prj.shape[0], chunk_size):
-            data_prj[chunk_start : (chunk_start + chunk_size)] = data_qry[chunk_start : (chunk_start + chunk_size)] + (
-                D[chunk_start : (chunk_start + chunk_size), :, None] * bias[G[chunk_start : (chunk_start + chunk_size)]]
-            ).sum(axis=1)
+            data_prj[chunk_start : (chunk_start + chunk_size)] = data_qry[
+                chunk_start : (chunk_start + chunk_size)
+            ] + (
+                D[chunk_start : (chunk_start + chunk_size), :, None]
+                * bias[G[chunk_start : (chunk_start + chunk_size)]]
+            ).sum(
+                axis=1
+            )
         for i, xx in enumerate(qry):
             _data = data_prj[cum_qry[i] : cum_qry[i + 1]]
             if row_normalize:
@@ -734,7 +783,15 @@ class SeuratIntegration:
             data[xx] = _data
         return data
 
-    def integrate(self, key_correct, row_normalize=True, n_components=30, k_weight=100, sd=1, alignments=None):
+    def integrate(
+        self,
+        key_correct,
+        row_normalize=True,
+        n_components=30,
+        k_weight=100,
+        sd=1,
+        alignments=None,
+    ):
         """Integrate datasets by transform data matrices from query to reference data using the MNN information."""
         if alignments is not None:
             self.alignments = alignments
@@ -744,7 +801,10 @@ class SeuratIntegration:
             dist = []
             for i in range(self.n_dataset - 1):
                 for j in range(i + 1, self.n_dataset):
-                    dist.append(len(self.anchor[(i, j)]) / min([self.n_cells[i], self.n_cells[j]]))
+                    dist.append(
+                        len(self.anchor[(i, j)])
+                        / min([self.n_cells[i], self.n_cells[j]])
+                    )
             self.alignments = find_order(np.array(dist), self.n_cells)
             print(f"Alignments: {self.alignments}")
 
@@ -757,7 +817,10 @@ class SeuratIntegration:
             corrected = [adata_list[i].X.copy() for i in range(self.n_dataset)]
         else:
             # correct dimensionality reduced matrix only
-            corrected = [normalize(adata_list[i].obsm[key_correct], axis=1) for i in range(self.n_dataset)]
+            corrected = [
+                normalize(adata_list[i].obsm[key_correct], axis=1)
+                for i in range(self.n_dataset)
+            ]
 
         for xx in self.alignments:
             print(xx)
@@ -790,7 +853,9 @@ class SeuratIntegration:
         """Transfer labels from query to reference space."""
         adata_list = list(self.adata_dict.values())
 
-        data_qry = np.concatenate([normalize(adata_list[i].obsm[key_dist], axis=1) for i in qry])
+        data_qry = np.concatenate(
+            [normalize(adata_list[i].obsm[key_dist], axis=1) for i in qry]
+        )
         data_qry_index = np.concatenate([adata_list[i].obs_names for i in qry])
 
         anchor, G, D, cum_qry = self.find_nearest_anchor(
@@ -819,7 +884,9 @@ class SeuratIntegration:
         if len(categorical_key) > 0:
             tmp = pd.concat([adata_list[i].obs[categorical_key] for i in ref], axis=0)
             enc = OneHotEncoder()
-            label_ref.append(enc.fit_transform(tmp[categorical_key].values.astype(np.str_)).toarray())
+            label_ref.append(
+                enc.fit_transform(tmp[categorical_key].values.astype(np.str_)).toarray()
+            )
             # add categorical key to make sure col is unique
             columns += enc.categories_
             # enc.categories_ are a list of arrays, each array are categories in that categorical_key
@@ -837,18 +904,30 @@ class SeuratIntegration:
         bias = label_ref[anchor[:, 0]]
         for chunk_start in np.arange(0, label_qry.shape[0], chunk_size):
             label_qry[chunk_start : (chunk_start + chunk_size)] = (
-                D[chunk_start : (chunk_start + chunk_size), :, None] * bias[G[chunk_start : (chunk_start + chunk_size)]]
+                D[chunk_start : (chunk_start + chunk_size), :, None]
+                * bias[G[chunk_start : (chunk_start + chunk_size)]]
             ).sum(axis=1)
 
-        all_column_names = np.concatenate(columns)  # these column names might be duplicated
+        all_column_names = np.concatenate(
+            columns
+        )  # these column names might be duplicated
         all_column_variables = np.repeat(categorical_key + continuous_key, cat_counts)
-        label_qry = pd.DataFrame(label_qry, index=data_qry_index, columns=all_column_names)
+        label_qry = pd.DataFrame(
+            label_qry, index=data_qry_index, columns=all_column_names
+        )
         result = {}
         for key in categorical_key + continuous_key:
             result[key] = label_qry.iloc[:, all_column_variables == key]
         return result
 
-    def save(self, output_path, save_local_knn=False, save_raw_anchor=False, save_mutual_knn=False, save_adata=False):
+    def save(
+        self,
+        output_path,
+        save_local_knn=False,
+        save_raw_anchor=False,
+        save_mutual_knn=False,
+        save_adata=False,
+    ):
         """Save the model and results to disk."""
         # save each adata in a separate dir
         output_path = pathlib.Path(output_path)
@@ -901,7 +980,9 @@ class SeuratIntegration:
         return obj
 
     @classmethod
-    def save_transfer_results_to_adata(cls, adata, transfer_results, new_label_suffix="_transfer"):
+    def save_transfer_results_to_adata(
+        cls, adata, transfer_results, new_label_suffix="_transfer"
+    ):
         """Save transfer results to adata."""
         for key, df in transfer_results.items():
             adata.obs[key + new_label_suffix] = adata.obs[key].copy()

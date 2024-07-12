@@ -67,7 +67,9 @@ def cca(
     )
 
     # CCA decomposition
-    model = TruncatedSVD(n_components=n_components, algorithm=svd_algorithm, random_state=random_state)
+    model = TruncatedSVD(
+        n_components=n_components, algorithm=svd_algorithm, random_state=random_state
+    )
     U = model.fit_transform(tf_data1.dot(tf_data2.T))
 
     # select dimensions with non-zero singular values
@@ -80,7 +82,10 @@ def cca(
     # compute ccv feature loading
     if k_filter:
         high_dim_feature = top_features_idx(
-            np.concatenate([U, V], axis=0).T.dot(np.concatenate([tf_data1, tf_data2], axis=0)), n_features=n_features
+            np.concatenate([U, V], axis=0).T.dot(
+                np.concatenate([tf_data1, tf_data2], axis=0)
+            ),
+            n_features=n_features,
         )
     else:
         high_dim_feature = None
@@ -118,7 +123,10 @@ def cca(
 def adata_cca(adata, group_col, separate_scale=True, n_components=50, random_state=42):
     groups = adata.obs[group_col].unique()
     if len(groups) != 2:
-        raise ValueError(f"CCA only handle 2 groups, " f"adata.obs[{group_col}] has {len(groups)} different groups.")
+        raise ValueError(
+            f"CCA only handle 2 groups, "
+            f"adata.obs[{group_col}] has {len(groups)} different groups."
+        )
     group_a, group_b = groups
     a = adata[adata.obs[group_col] == group_a, :].X
     b = adata[adata.obs[group_col] == group_b, :].X
@@ -222,7 +230,9 @@ def lsi_cca(
     tf2, idf2 = tf_idf(tf_data2[:, bin_filter], scale_factor=scale_factor)
 
     # CCA part
-    model = TruncatedSVD(n_components=n_components, algorithm=svd_algorithm, random_state=0)
+    model = TruncatedSVD(
+        n_components=n_components, algorithm=svd_algorithm, random_state=0
+    )
     tf = tf1.dot(tf2.T)
     U = model.fit_transform(tf)
 
@@ -291,7 +301,11 @@ class LSI:
         if idf is not None:
             self.model = model
         else:
-            self.model = TruncatedSVD(n_components=n_components, algorithm=algorithm, random_state=random_state)
+            self.model = TruncatedSVD(
+                n_components=n_components,
+                algorithm=algorithm,
+                random_state=random_state,
+            )
 
     def fit(self, data):
         tf, idf = tf_idf(data, self.scale_factor)
@@ -312,7 +326,11 @@ class LSI:
     def transform(self, data, chunk_size=50000, scaler=None):
         tf_reduce = []
         for chunk_start in np.arange(0, data.shape[0], chunk_size):
-            tf, _ = tf_idf(data[chunk_start : (chunk_start + chunk_size)], self.scale_factor, self.idf)
+            tf, _ = tf_idf(
+                data[chunk_start : (chunk_start + chunk_size)],
+                self.scale_factor,
+                self.idf,
+            )
             tf_reduce.append(self.model.transform(tf))
         return np.concatenate(tf_reduce, axis=0) / self.model.singular_values_
 
@@ -324,7 +342,9 @@ class SVD:
         algorithm="arpack",
         random_state=0,
     ):
-        self.model = TruncatedSVD(n_components=n_components, algorithm=algorithm, random_state=random_state)
+        self.model = TruncatedSVD(
+            n_components=n_components, algorithm=algorithm, random_state=random_state
+        )
 
     def fit(self, data):
         self.model.fit(data)
@@ -346,11 +366,15 @@ class SVD:
         return np.concatenate(tf_reduce, axis=0)
 
 
-def downsample(data1, data2, scale1, scale2, todense, max_cc_cell=20000, random_state=0):
+def downsample(
+    data1, data2, scale1, scale2, todense, max_cc_cell=20000, random_state=0
+):
     scaler1, scaler2 = [None, None]
     np.random.seed(random_state)
     if data1.shape[0] > max_cc_cell:
-        sel1 = np.random.choice(np.arange(data1.shape[0]), min(max_cc_cell, data1.shape[0]), False)
+        sel1 = np.random.choice(
+            np.arange(data1.shape[0]), min(max_cc_cell, data1.shape[0]), False
+        )
         tf1 = data1[sel1]
     else:
         tf1 = data1.copy()
@@ -359,7 +383,9 @@ def downsample(data1, data2, scale1, scale2, todense, max_cc_cell=20000, random_
             tf1 = tf1.toarray()
 
     if data2.shape[0] > max_cc_cell:
-        sel2 = np.random.choice(np.arange(data2.shape[0]), min(max_cc_cell, data2.shape[0]), False)
+        sel2 = np.random.choice(
+            np.arange(data2.shape[0]), min(max_cc_cell, data2.shape[0]), False
+        )
         tf2 = data2[sel2]
     else:
         tf2 = data2.copy()
