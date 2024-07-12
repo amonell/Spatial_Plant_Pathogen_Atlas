@@ -12,7 +12,7 @@
 			"installRMarkdown": true
 		},
 		"ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
-			"packages": "Seurat@4.0.2, languageserver, BiocManager, devtools, hdf5r, RcppZiggurat",
+			"packages": "Seurat@4.0.2, languageserver, BiocManager, devtools, hdf5r, RcppZiggurat, Signac@1.2.0",
 			"installSystemRequirements": true,
 			// https://packagemanager.posit.co/client/#/repos/cran/setup?snapshot=2021-06-01&distribution=ubuntu-20.04
 			// Make sure that the Profile.site is updated accordingly
