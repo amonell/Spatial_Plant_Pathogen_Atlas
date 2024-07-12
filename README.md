@@ -18,7 +18,7 @@ Plants lack specialized and mobile immune cells, requiring any cells–regardles
 
 ## Setup
 
-This repository contains a `devcontainer` to allow to run the scripts in a reproducible manner. Please see the [documentation](https://code.visualstudio.com/docs/devcontainers/containers) for further information on how to use devcontainers. We have two devcontainers for the spatial pipelines, all Python scripts can be run with a devcontainer creating the environment "python_plant_pathogen_atlas", and all R scripts can be run with a devcontainer creating the environment "r_plant_pathogen_atlas". 
+This repository contains a `devcontainer` to allow to run the scripts in a reproducible manner. Please see the [documentation](https://code.visualstudio.com/docs/devcontainers/containers) for further information on how to use devcontainers. We have three devcontainers for the spatial pipelines, and each notebook should be run with the devcontainer specified at the top. The Python scripts can be run with devcontainers creating the environments `python_plant_pathogen_atlas` and `python_scvi_environment`, and all R scripts can be run with a devcontainer creating the environment `r_plant_pathogen_atlas`. 
 
 ##### Running from VS Code
 
@@ -31,14 +31,6 @@ This repository contains a `devcontainer` to allow to run the scripts in a repro
 5. Choose the devcontainer you want to use.
 
 We are running Ubuntu 22.04.3 LTS.
-
-##### If you prefer not to use Docker
-
-> A yml file for the Python environment can be found at:
-> `.devcontainer/docker_python/python_scripts_environment.yml`. 
-
-> The required packages and versions for the R environment are at:
-> `.devcontainer/devcontainer_R/r_packages.txt`
 
 ## Spatial Data Download
 
