@@ -1,0 +1,13 @@
+{
+    "name": "python_scvi_environment",
+    "dockerFile": "Dockerfile",
+    "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "ms-azuretools.vscode-docker"
+    ],
+    "settings": {
+        "python.pythonPath": "/opt/conda/envs/python_scvi_environment/bin/python"
+    },
+    "postCreateCommand": "pip install ipykernel && python -m ipykernel install --user --name=python_scvi_environment"
+}

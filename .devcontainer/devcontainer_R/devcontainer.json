@@ -1,7 +1,57 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-    "name": "r_plant_pathogen_atlas",
-    "dockerFile": "Dockerfile",
-    "extensions": [
-        "ms-azuretools.vscode-docker"
-    ],
+	"name": "r_environment_pathogen_atlas",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/base:ubuntu-20.04",
+    "features": {
+        "ghcr.io/rocker-org/devcontainer-features/r-rig:latest": {
+			"version": "4.0.5",
+			"installRadian": true,
+			"installJupyterlab": true,
+			"installRMarkdown": true
+		},
+		"ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+			"packages": "Seurat@4.0.2, languageserver, BiocManager, devtools, hdf5r, RcppZiggurat",
+			"installSystemRequirements": true,
+			// https://packagemanager.posit.co/client/#/repos/cran/setup?snapshot=2021-06-01&distribution=ubuntu-20.04
+			// Make sure that the Profile.site is updated accordingly
+			"cranMirror": "https://packagemanager.posit.co/cran/__linux__/focal/2021-06-01"
+		},
+		"ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+            "packages": "libhdf5-dev, libgsl-dev"
+        }
+    },
+	// Set a global package repository for R.
+	// The R version should match the one above.
+	"postCreateCommand": "sudo cp .devcontainer/devcontainer_R/Rprofile.site /opt/R/4.0.5/lib/R/etc/Rprofile.site && Rscript -e 'BiocManager::install(\"SummarizedExperiment\"); BiocManager::install(\"SingleCellExperiment\"); devtools::install_github(\"JiekaiLab/dior\"); devtools::install_github(\"dmcable/spacexr\")'&& sudo chmod -R 777 /workspaces/Spatial_Plant_Pathogen_Atlas/data",
+	
+	"mounts": [
+		"source=/projects,target=/projects,type=bind,consistency=cached",
+		"source=/mnt,target=/mnt,type=bind,consistency=cached"
+	],
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			"settings": {
+				"extensions.autoUpdate": false,
+        		"extensions.autoCheckUpdates": false
+			},
+			"extensions": [
+				"ms-python.python",
+				"ms-toolsai.jupyter",
+				"ms-toolsai.jupyter-renderers",
+				"ms-python.black-formatter",
+				"naumovs.color-highlight",
+				"ms-python.vscode-pylance"
+			]
+		}
+	},
+	"runArgs": [
+		"--gpus",
+		"all"
+	],
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "vscode"
 }
