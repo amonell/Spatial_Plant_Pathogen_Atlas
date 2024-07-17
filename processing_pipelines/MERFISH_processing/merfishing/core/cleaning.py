@@ -9,23 +9,23 @@ import scanpy as sc
 
 
 def calculate_centroid(points):
-    '''
+    """
     Calculate the centroid of a set of points
     :param points: list of points
     :return: centroid
-    '''
+    """
     centroid = np.mean(points, axis=0)
     return centroid.tolist()
 
 
 def bin_points(spatial_points, bin_size=20):
-    '''
+    """
     Bin spatial points into groups of bin_size
 
     :param spatial_points: list of spatial points
     :param bin_size: number of points per bin
     :return: list of bins, list of bin centers
-    '''
+    """
     bins = []
     bin_centers = []
     points_copy = spatial_points.copy()
@@ -63,13 +63,13 @@ def bin_points(spatial_points, bin_size=20):
 
 
 def create_grid_bins(spatial_points, n):
-    '''
+    """
     Create a grid of bins for spatial points. This is different than the previous functio, where in this function bins are created by spatial coords, not number of points.
 
     :param spatial_points: list of spatial points
     :param n: number of bins
     :return: grid of bins, bin centers
-    '''
+    """
     xmin, ymin = np.min(spatial_points, axis=0)
     xmax, ymax = np.max(spatial_points, axis=0)
 
@@ -102,14 +102,14 @@ def create_grid_bins(spatial_points, n):
 
 
 def display_fovs(merfish, remove_fovs=20, key="Cluster"):
-    '''
+    """
     Display the field of views in the MERFISH data
 
     :param merfish: MERFISH dataset
     :param remove_fovs: number of FOVs to remove
     :param key: key to color the FOVs
     :return: bin centers
-    '''
+    """
     spatial_points = np.array(
         [merfish.obsm["spatial"][:, 0], merfish.obsm["spatial"][:, 1]]
     ).T
@@ -141,7 +141,7 @@ def display_fovs(merfish, remove_fovs=20, key="Cluster"):
 
 
 def remove_fovs(merfish, fovs_to_remove, binned_centers, key="Cluster"):
-    '''
+    """
     Remove FOVs from the MERFISH dataset in fovs_to_remove
 
     :param merfish: MERFISH dataset
@@ -149,7 +149,7 @@ def remove_fovs(merfish, fovs_to_remove, binned_centers, key="Cluster"):
     :param binned_centers: bin centers
     :param key: key to color the FOVs
     :return: MERFISH dataset with FOVs removed
-    '''
+    """
 
     fov_associated = []
     tree = KDTree(binned_centers)

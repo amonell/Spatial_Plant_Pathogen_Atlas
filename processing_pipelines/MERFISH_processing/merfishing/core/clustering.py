@@ -5,7 +5,7 @@ from anndata import AnnData
 
 
 def plot_qc_feature(cell_by_gene, cell_meta, control_probes=False):
-    '''
+    """
     Plot violin and strip plots for each quality control metric
 
     :param cell_by_gene: AnnData object with cell by gene matrix
@@ -13,7 +13,7 @@ def plot_qc_feature(cell_by_gene, cell_meta, control_probes=False):
     :param control_probes: boolean indicating whether to use control probes in qc
 
     :return: None
-    '''
+    """
     qc_info = cell_meta
 
     if control_probes:
@@ -62,7 +62,7 @@ def qc_before_clustering(
     min_tc_area=0.3,
     max_tc_area=10,
 ):
-    '''
+    """
     Filter cells based on quality control metrics
 
     :param adata: AnnData object with cell by gene matrix
@@ -76,8 +76,8 @@ def qc_before_clustering(
     :param max_tc_area: maximum transcript counts divided by cell area
 
     :return: filtered AnnData object
-    '''
-    
+    """
+
     print(f"{len(adata.obs.index)} cells before QC filtering")
     adata = adata[
         (adata.obs["cell_area"] > min_cell_area)
