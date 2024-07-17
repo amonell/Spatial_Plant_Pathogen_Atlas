@@ -63,9 +63,9 @@ data
 │       └── segmentation2_counts.tsv
 ├── useful_files
 │   └── geneID_to_geneName_MERSCOPE_panel1.txt
-├── AvrRpt2_alone.rds
-├── AvrRpt2_alone2.rds
-└── DC3000_alone.rds
+├── AvrRpt2_alone.rds (snMultiome with only the first replicates)
+├── AvrRpt2_alone2.rds (snMultiome with the second replicates)
+└── DC3000_alone.rds (snMultiome for the 24hr DC3000 sample)
 ```
 
 ## Spatial Preprocessing
