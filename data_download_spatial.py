@@ -72,7 +72,7 @@ download_directory = os.path.join("data", "useful_files")
 if not os.path.exists(download_directory):
     os.makedirs(download_directory)
 
-response = requests.get(url)
+response = requests.get(useful_file)
 filename = os.path.join(download_directory, useful_file.split("/")[-1])
 
 # Save the file to the specified directory
@@ -90,7 +90,7 @@ useful_files = [
 for useful_file in useful_files:
     download_directory = os.path.join("data")
 
-    response = requests.get(url)
+    response = requests.get(useful_file)
     filename = os.path.join(download_directory, useful_file.split("/")[-1])
 
     # Save the file to the specified directory
